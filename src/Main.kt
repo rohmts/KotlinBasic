@@ -43,7 +43,7 @@ fun main(args: Array<String>) {
     print("Variable longString = $longString")
     println("Variable tipe data array\nnumber => ${arrayNumber[1]}\nlong => ${arrayLong}\ndouble => ${arrayDouble}\nfloat => ${arrayFloat}")
 
-    var person = Person("Rohmts", 23, true);
+    val person = Person("Rohmts", 23, true);
     println("Pojo.Person name : ${person.name}\n" +
             "Pojo.Person age : ${person.age}\n" +
             "Pojo.Person gender :${person.gender}")
@@ -58,5 +58,63 @@ fun main(args: Array<String>) {
 
     val equilateralTriangle = EquilateralTriangle(5, 5, 5)
     println("Is EquilateralTriangle : ${equilateralTriangle.isEquilateralTriangle}")
+
+    //explicit conversion
+    val a = "25"
+    val b = "25"
+    val result = a.toInt() + b.toInt()
+    println("${result}")
+
+    //implicit conversion
+    val c = 1000
+    println("c data type : ${c.javaClass.kotlin.qualifiedName}")
+
+    //save conversion its mean put data from smaller data storage area into large data storage area
+    val d: Int = 10
+    val e: Long = d.toLong()
+    println("e data type : ${e.javaClass.kotlin.qualifiedName}")
+
+    //unsave conversion
+    val f: Float = 100.1f
+    val g: Int = f.toInt()
+    println("e data type : ${g.javaClass.kotlin.qualifiedName}")
+    println("e value : ${g}") //lost 0.1
+
+    var h = -7
+    h = h.unaryPlus() //a = + a
+    println("h value : ${h}")
+    h = h.unaryMinus()
+    println("h value : ${h}")
+
+    var k = 2
+    println("Case 1 : ${k++}")
+    println("Case 2 : ${++k}")
+
+    val l = 3
+    val resultMod = k.rem(l)
+    println("${resultMod}")
+
+    val array = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    if (5 in array) println("5 in array")
+    if (17 in array) println("17 not in array")
+
+    k+=l
+    println("${k}")
+
+    println("input/output")
+    print("Please enter your name : ")
+    val name = readLine()
+    print("Are u women? ")
+    val gender = readLine()
+    println("Your name is ${name}")
+    if (gender?.toBoolean() == true)
+        println("yes! Im a women")
+    else
+        println("Im not a women")
+    print("Salary from Android Developer : Rp.")
+    var salaryAndroid = readLine()?.toInt()
+    print("Salary from iOS Developer : Rp.")
+    var salaryIos = readLine()?.toInt()
+    println("Total salary : Rp.${salaryAndroid?.plus(salaryIos!!)}")
 
 }
